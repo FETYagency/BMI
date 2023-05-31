@@ -1,0 +1,26 @@
+:root{
+    --CLR-BLUE:hsl(227, 92%, 58%);
+    --CLR-GUNMETAL: hsl(215, 31%, 21%);
+    --CLR-DARK_ELECTRIC_BLUE: hsl(215, 17%, 45%);
+    --CLR-BORDERS: hsl(200, 24%, 88%);
+    --CLR-PURE_WHITE: hsl(0, 0%, 100%);
+
+
+
+    --LH-H: 110%; 
+
+    --FS-HXL:4.26rem;
+    --FS-HL:3.2rem;
+    --FS-HM:1.6rem;
+    --FS-HS:1.33rem;
+
+
+    
+    --LH-B:150%;
+    
+    --FS-BM: 1.09rem;
+    --FS-BS: .87rem;
+
+    
+    
+}

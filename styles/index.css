@@ -1,0 +1,691 @@
+@import url(reset.css);
+@import url(vars.css);
+:root{
+    --FF: "interregular";
+    --WGHT-SEMI_BOLD: 600;
+    --WGHT-REGULAR: 400;
+}
+body{
+    font-family: var(--FF);
+}
+/* HEADER STYLING */
+header{
+    display: flex;
+    position: relative;
+    margin-inline: auto;
+    justify-content: center;
+    max-inline-size: min(357px,100%);
+}
+.square_pattern{
+    position: absolute;
+    z-index: -1;
+    border-radius: 0px 0px 35px 35px;
+    
+    /* HEADER==>SQUARE PATTERN */
+    background: linear-gradient(290.1deg, #D6E6FE 0%, rgba(214, 252, 254, 0) 100%);
+    inset-inline: 0%;
+    block-size: 640px;
+}
+header>img{
+    margin-block: 2.24rem 1.7rem;
+}
+.BMI_section{
+    margin-inline: auto;
+    
+    max-inline-size: 328px;
+    text-align: center;
+}
+/* BMI_S ===> ARTICLE */
+.BMI_para{
+    font-size: var(--FS-BM);
+    font-weight: var(--WGHT-REGULAR);
+    line-height: var(--LH-B);
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+}
+.BMI_header{
+    font-size: var(--FS-HL);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    line-height: var(--LH-H);
+    color: var(--CLR-GUNMETAL);
+    margin-block: 0 1.6rem;
+}
+/* BMI CALCULATOR CONTAINER STYLING */
+.BMI_CALCULATOR{
+    margin-block-start: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--CLR-PURE_WHITE);
+    box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+    gap: 1.6rem;
+    padding: 1.6rem;;
+    border-radius: 1.6rem;
+}
+.CALCULATOR_header{
+    font-size: var(--FS-HM);
+    line-height: var(--LH-H);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    color: var(--CLR-GUNMETAL);
+    letter-spacing: -1.7px;
+}
+/* CALCULATOR ===> OPTION CONTAINER  */
+.CALCULATOR_OPTION{
+    display: flex;
+    justify-content: space-between;
+    max-inline-size: 100%;
+}
+/* styling the radio inputs */
+.OPTION>label{
+    font-size: var(--FS-BM);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    line-height: var(--LH-B);
+    color: var(--CLR-GUNMETAL);
+
+    /* TRICK */
+    display: grid;
+    grid-template-columns:  auto auto;
+    gap: 0.5em;
+    align-items: center;
+}
+input[type="radio"] {
+
+    appearance: none;
+    background-color: #fff;
+
+    font: inherit;
+    color: currentColor;
+    width: 31px;
+    height: 31px;
+    border: 1px solid var(--CLR-BORDERS);
+    border-radius: 50%;
+    transition: .22S all ease-in-out;
+
+    /* to center the dot  */        
+    display: grid;
+    place-content: center;
+}
+input[type="radio"]:hover {
+    border: 1px solid var(--CLR-BLUE);
+}
+  input[type="radio"]::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 20%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+
+    /* 
+        Notice that with the default printing settings,
+        backgrounds are removed. If a user prints a page with
+        these radio buttons, they won't be able to know which
+        one was checked. (Inset) Box-shadows are not removed
+        at printing, and they will a similar effect to the
+        radial background. 
+    */
+    box-shadow: inset 6px 6px  var(--CLR-BLUE);
+  }
+  input[type="radio"]:checked:before {
+    transform: scale(1);
+  }
+input[type="radio"]:checked{
+    background-color: hsl(227, 92%, 58%,.15);
+    border-color: transparent;
+
+}
+/* CALCULATOR ===> OUTPUT CONTAINER */
+.CALCULATOR_OUTPUT{
+    display: flex;
+    gap: 1.1rem;
+    flex-direction: column;
+}
+.OUTPUT{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 8px;
+}
+.OUTPUT>label{
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+    font-size: var(--FS-BS);
+    line-height: var(--FS-B);
+}
+[type="text"]{
+    font-size: var(--FS-HM);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    line-height: var(--LH-H);
+    outline: none;
+    border: none;
+    padding-block: 1.47rem;
+    padding-inline: 1.6rem;
+    inline-size: 100%;
+    border: var(--CLR-BORDERS) 1px solid;
+    border-radius: 12px;
+    background-color: transparent;
+    transition: all .4s ease;
+
+}
+[type="text"]:focus{
+    border: var(--CLR-BLUE) 1px solid;
+}
+.OUTPUT_INPUT_CONTAINER{
+    position: relative;
+}
+.INPUT_unit{
+    position: absolute;
+    inset-inline: auto 1.6rem;
+    inset-block: 50% auto;
+    transform: translateY(-50%);
+    color: var(--CLR-BLUE);
+    font-size: var(--FS-HM);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    line-height: var(--LH-H);
+    pointer-events: none;
+}
+/*  CALCULATOR ===> DESCRIPTION CONTAINER  */
+.CALCULATOR_DESCRIPTION{
+    background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);;
+    display: flex;
+    padding: 2.1rem;
+    gap: 1.6rem;
+    color: var(--CLR-PURE_WHITE);
+    text-align: start;
+    justify-content: space-between;
+    flex-direction: column; 
+    align-items: start;
+    border-radius: 1.08rem;
+}
+.RESULT_header{
+    font-size: var(--FS-BS);
+    line-height: var(--LH-B);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    margin-block: 0 8px;
+}
+.RESULT_BOLD_NUMBER{
+    font-size: var(--FS-HL);
+    font-weight: var(--WGHT-SEMI_BOLD);
+}
+.DESCRIPTION_para{
+    font-size: var(--FS-BM);
+    line-height: var(--LH-B);
+    max-inline-size: 267px;
+}
+b{
+    font-weight: var(--WGHT-SEMI_BOLD);
+}
+/* what section */
+.WHAT_section{
+    margin-block: 4.8rem;
+
+    display: grid;
+    grid-template-columns: auto;
+    max-inline-size: min(328px,100%);
+    margin-inline: auto;
+    gap: 3.2rem;
+    position: relative;
+}
+.section_hero{
+    inline-size: min(375px,100%);
+    justify-self: center;
+}
+.what_article{
+    container-type: inline-size;
+}
+.what_article>h2{
+    font-size: clamp(1rem, 8cqi, var(--FS-HXL));
+    line-height: clamp(2rem, 10cqi, var(--LH-H));
+    font-weight: var(--WGHT-SEMI_BOLD);
+    color: var(--CLR-GUNMETAL);
+    margin-block: 0 3.2rem;
+}
+.what_article>p{
+    font-size: clamp(.4rem, 5cqi,var(--FS-BM));
+    line-height: clamp(1rem, 10cqi,var(--LH-B));
+    font-weight: var(--WGHT-REGULAR);
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+
+}
+/* features */
+.features{
+    background: linear-gradient(290.1deg, #d6e6fe55 0%, rgba(214, 252, 254, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2.6rem;
+    max-inline-size: 328px;
+    margin-inline: auto;
+    padding-inline: 1.43rem;
+}
+li{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: start;
+}
+li>article>h3{
+    font-size: var(--FS-HM);
+    line-height: var(--LH-H);
+    margin-block: 0 1.6rem;
+}
+li>article>p{
+    font-size: var(--FS-BM);
+    line-height: var(--LH-B);
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+}
+.curve{
+    position: absolute;
+    inset-inline: auto 2.2rem;
+    inset-block: -5.76rem auto;
+    display: none;
+}
+/* the limitation section */
+.limitation_section{
+    position: relative;
+    inline-size: min(328px,100%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.73rem;
+
+
+    margin-block: 4.73rem 6.4rem ;
+}
+.limitation_article{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.13rem;
+}
+
+.limitation_article>h2{
+    font-size: var(--FS-HM);
+    line-height: var(--LH-H);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    color: var(--CLR-GUNMETAL);
+}
+
+.limitation_article>P{
+    font-size: var(--FS-BM);
+    line-height: var(--LH-B);
+    font-weight: var(--WGHT-REGULAR);
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+}
+
+.grid_layout{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1.1rem;
+}
+.article_grid_item{
+    box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+    border-radius: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+    gap: 1.5rem;
+    background: var(--CLR-PURE_WHITE);
+}
+.article_grid_item>h3{
+    font-size: var(--FS-HM);
+    line-height: var(--LH-H);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    color: var(--CLR-GUNMETAL);
+
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+/* adding-icons */
+.article_grid_item:nth-child(1)>h3:before{
+    content: url(../assets/images/icon-gender.svg);
+}
+.article_grid_item:nth-child(2)>h3:before{
+    content: url(../assets/images/icon-age.svg);
+}
+.article_grid_item:nth-child(3)>h3:before{
+    content: url(../assets/images/icon-muscle.svg);
+}.article_grid_item:nth-child(4)>h3:before{
+    content: url(../assets/images/icon-pregnancy.svg);
+}.article_grid_item:nth-child(5)>h3:before{
+    content: url(../assets/images/icon-race.svg);
+}
+.article_grid_item>P{
+    font-size: var(--FS-BM);
+    line-height: var(--LH-B);
+    font-weight: var(--WGHT-REGULAR);
+    color: var(--CLR-DARK_ELECTRIC_BLUE);
+}
+
+/* the tablet version query */
+
+@media(width>=600px){
+    body{
+        padding-inline: .5rem;
+    }
+    header{
+        max-inline-size: min(768px,100%);
+    }
+    .square_pattern{
+        block-size: 768px;
+    }
+    header>img{
+        margin-block: 2.24rem 2.66rem;
+    }
+    .BMI_section{
+        inline-size: min(686px,100%);
+        max-inline-size: 100%;
+
+        text-align: start;
+    }
+    .BMI_CALCULATOR{
+        margin-block-start: 2.66rem;
+        gap: 2.6rem;
+        padding: 2.6rem;;
+    }
+    .CALCULATOR_header{
+        letter-spacing: -1px;
+    }
+    .CALCULATOR_OPTION{
+        display: flex;
+        justify-content: space-between;
+        max-inline-size: min(435px, 100%);
+    }
+    .CALCULATOR_OUTPUT{
+        gap: 1.6rem;
+        flex-direction: row;
+    }
+    .CALCULATOR_DESCRIPTION{
+        justify-content: space-between;
+        flex-direction: row; 
+        align-items: center;
+        border-radius: 106px 999px 999px 106px;
+    }
+    .RESULT_BOLD_NUMBER{
+        letter-spacing: -1px;
+    }
+    .DESCRIPTION_para{
+        font-size: var(--FS-BS);
+    }
+    .WHAT_section{
+        grid-template-columns: auto 1fr;
+        max-inline-size: min(686px,100%);
+        gap: 0rem;
+
+        margin-block: 8.73rem 6.4rem;
+        position: relative;
+    }
+    .section_hero{
+        inline-size: 360px;
+        place-self: end center;
+        position: relative;
+        inset-inline-start: -4.93rem;
+    }
+    .what_article{
+        container-type: unset;
+        place-self: center;
+
+    }
+    .what_article>h2{
+        font-size:  clamp(2rem,4.4vw,var(--FS-HL));
+        line-height: clamp(.5rem,10vw,var(--LH-H));
+        font-weight: var(--WGHT-SEMI_BOLD);
+        margin-block: 0 2.3rem;
+    }
+    .what_article>p{
+        font-size:  clamp(.6rem,2.5vw,var(--FS-BM));
+        line-height: clamp(.5rem,10vw,var(--LH-B));
+    }
+    .features{
+        display: flex;
+        max-inline-size: 100%;
+        padding-inline: 3.2rem;
+        padding-block: 4rem;
+    }
+    li{
+        flex-direction: row;
+        gap: 2.66rem;
+    }
+    .limitation_section{
+        position: relative;
+        inline-size: min(686px,100%);
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3.73rem;
+    
+    
+        padding-block: 4.73rem 6.4rem ;
+    }   
+    .limitation_article{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 2.13rem;
+    }
+    
+    .limitation_article>h2{
+        font-size: var(--FS-HM);
+        line-height: var(--LH-H);
+        font-weight: var(--WGHT-SEMI_BOLD);
+        color: var(--CLR-GUNMETAL);
+    }
+    
+    .limitation_article>P{
+        font-size: var(--FS-BM);
+        line-height: var(--LH-B);
+        font-weight: var(--WGHT-REGULAR);
+        color: var(--CLR-DARK_ELECTRIC_BLUE);
+    }
+    .grid_layout{
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+    }
+    .article_grid_item:last-child{
+        grid-column: 1/-1;
+        max-inline-size: 365px;
+        place-self: center;
+    }
+    .article_grid_item{
+        justify-content: center;
+        padding: 2.13rem;
+        gap: 1.5rem;
+    }
+}
+/* the tablet version query */
+@media(width>=1000px){
+
+    body{
+        padding-inline: 2.13rem;
+    }
+    header{
+        justify-content: start;
+        max-inline-size: min(1160px,100%);
+    }
+    .square_pattern{
+        inset-inline: -7.86rem 19.86rem;
+        block-size: 737px;
+    }
+    header>img{
+        margin-block: 5.13rem 1.86rem;
+    }
+    .BMI_section{
+        inline-size: min(1160px, 100%);
+        max-inline-size: 100%;
+        text-align: start;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 2.1rem;
+    }
+    .BMI_para{
+        max-inline-size: 500px;
+    }
+
+    .BMI_header{
+        font-size: var(--FS-HXL);
+        margin-block: 0 2.33rem;
+        letter-spacing: -0.05px;
+    }
+    .BMI_CALCULATOR{
+        margin-block-start: 0;
+        gap: 2.6rem;
+        padding: 2.6rem;
+        max-inline-size: 564px;
+    }
+    .CALCULATOR_header{
+        letter-spacing: -1px;
+    }
+    .CALCULATOR_OPTION{
+        max-inline-size: min(366px,100%);
+    }
+    .CALCULATOR_OUTPUT{
+        gap: 1.6rem;
+        flex-direction: row;
+    }
+    .DESCRIPTION_para{
+        max-inline-size: 206px;
+    }
+    .WHAT_section{
+        grid-template-columns: auto 1fr;
+        max-inline-size: min(1160px,100%);
+        gap: 1rem;
+        margin-block: 10.06rem 6.4rem;
+    
+    }
+    .section_hero{
+        inline-size: 564px;
+        place-self: center end;
+        position: static;
+        inset-inline-start: 0;
+    }
+    .what_article{
+        place-self: end end;
+        max-inline-size: 465px;
+        margin-block-end: 2.6rem;
+        container-type: unset;
+    }
+    .curve{
+        display: inline-block;
+    }
+    .what_article>h2{
+        font-size:  clamp(1rem,4vw,var(--FS-HL));
+        line-height: clamp(.5rem,10vw,var(--LH-H));
+        font-weight: var(--WGHT-SEMI_BOLD);
+        margin-block: 0 2.3rem;
+    }
+    .what_article>p{
+        font-size:  clamp(.9rem,1.4vw,var(--FS-BM));
+        line-height: clamp(.5rem,10vw,var(--LH-B));
+    }
+
+    .features{
+        inline-size: min(1392px,100%);
+        border-radius: 35px;
+        display: flex;
+        gap: 2.13rem;
+        flex-direction: row;
+        padding-inline: 7.73rem;
+        padding-block: 4.8rem;
+    }
+    li{
+        flex-direction: column;
+        gap: 2.66rem;
+    }
+    .limitation_section{
+        position: relative;
+        inline-size: min(1160px,100%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3.73rem;
+        padding-block: 8rem ;
+    }
+    .limitation_article{
+        text-align: start;
+        inline-size: min(564px,46%);
+        position: absolute;
+    }
+    .limitation_article>h2{
+        font-size: var(--FS-HL);
+        line-height: var(--LH-H);
+        font-weight: var(--WGHT-SEMI_BOLD);
+        color: var(--CLR-GUNMETAL);
+    }
+    .limitation_article>P{
+        font-size: var(--FS-BM);
+        line-height: var(--LH-B);
+        font-weight: var(--WGHT-REGULAR);
+        color: var(--CLR-DARK_ELECTRIC_BLUE);
+    }
+    .grid_layout{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+        inline-size: min(961px,100%);
+        align-self: flex-end;
+    }
+    .article_grid_item:first-child{
+        grid-column: 1/-1;
+        place-self:  stretch end;
+        margin-inline-end: 6.6rem;
+    }
+    .article_grid_item:nth-child(2){
+        grid-column: 1/-1;
+        grid-row: 2/3;
+        place-self:  stretch end;
+        margin-inline-end: 26.4rem;
+    }
+    .article_grid_item:nth-child(3){
+        grid-column: 1/-1;
+        grid-row: 2/3;
+        place-self:  stretch end;
+    }
+    .article_grid_item:nth-child(4){
+        grid-column: 1/-1;
+        grid-row: 3/4;
+        place-self:  stretch start;
+        margin-inline-start: 26.4rem;
+
+    }
+    .article_grid_item:last-child{
+        grid-column: 1/-1;
+        grid-row: 3/4;
+        place-self:  stretch start;
+
+    }
+    .article_grid_item{
+        inline-size: min(365px,100%);
+    }
+}
+
+.INPUT_unit_imperial{
+    position: absolute;
+    inset-inline: auto .5rem;
+    inset-block: 50% auto;
+
+    transform: translateY(-50%);
+    
+    
+    color: var(--CLR-BLUE);
+    font-size: var(--FS-HM);
+    font-weight: var(--WGHT-SEMI_BOLD);
+    line-height: var(--LH-H);
+    pointer-events: none;
+}
+.INPUT_unit_imperial:nth-of-type(1){
+    position: absolute;
+    inset-inline: auto calc(50% + 1.6rem);
+}
+
+
+.metric{
+    display: block;
+}
+.imperial{
+    display: none;
+    gap: 1.1rem;
+}
+.imperial_theme{
+    flex-direction: column;
+}
